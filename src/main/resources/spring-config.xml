@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
+	 "
+	default-autowire="byName">
+	<!-- 加载配置属性文件 -->
+
+<!-- 	<context:property-placeholder
+		ignore-unresolvable="true"
+		location="classpath:/props/datasource.properties,classpath:/props/important.properties,classpath:/props/jsf.properties" />
+ -->	<!-- aop动态代理 -->
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+
+	<context:annotation-config></context:annotation-config>
+
+	<bean class="com.jd.athena.mybatis.session.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.jd.icomment.base.mysql.dao.shard" />
+		<property name="sqlSessionFactoryBeanName" value="athenaSqlSessionFactory" />
+	</bean>
+
+
+</beans>

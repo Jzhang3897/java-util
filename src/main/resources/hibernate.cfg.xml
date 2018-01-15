@@ -6,10 +6,6 @@
   <session-factory>
     <property name="connection.url">jdbc:mysql://192.168.149.31:3306/comment_reward</property>
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-    <mapping class="com.zj.util.entity.ActiveCommentRecordEntity"/>
-    <mapping class="com.zj.util.entity.ActiveSkuRelationEntity"/>
-    <mapping class="com.zj.util.entity.RewardActiveEntity"/>
-    <mapping class="com.zj.util.entity.RewardRecordLogEntity"/>
     <!-- <property name="connection.username"/> -->
     <!-- <property name="connection.password"/> -->
 

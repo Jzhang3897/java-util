@@ -42,10 +42,10 @@ public class GenerateEntity {
             case "tinyint": type ="int";break;
             case "datetime": type ="Date";break;
             case "text": type ="String";break;
-            case "double": type ="double";break;
-            case "float": type ="float";break;
+            case "double": type ="Double";break;
+            case "float": type ="Float";break;
             case "smallint": type ="int";break;
-            case "integer": type ="int";break;
+            case "integer": type ="Integer";break;
             case "decimal": type ="BigDecimal";break;
             case "char": type = "char";break;
             default: type = sqlType;
