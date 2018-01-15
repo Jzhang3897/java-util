@@ -11,19 +11,24 @@ public class GenerateEntity {
     private static String SPLIT_CHAR = "\t";
 
     public static void main(String[] args) throws Exception {
-        generateEntity("D:\\data\\reward1.txt");
-        generateEntity("www");
+        generateEntity("D:\\data\\reward1.txt", true);
     }
-    private static void generateEntity(String fileName) throws Exception {
+
+    private static void generateEntity(String fileName, boolean annotation) throws Exception {
         BufferedReader bf = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
         String line;
         while ((line = bf.readLine()) != null) {
             String[] columns = line.split(SPLIT_CHAR);
-            if ("id".equals(columns[0])) {
-                System.out.println("@Id");
-                System.out.println("@GeneratedValue(strategy = GenerationType.IDENTITY)");
+            if (annotation) {
+                if ("id".equals(columns[0])) {
+                    System.out.println("@Id");
+                    System.out.println("@GeneratedValue(strategy = GenerationType.IDENTITY)");
+                }
+                if("Date".equalsIgnoreCase(typeOf(columns[1]))){
+                    System.out.println("@JsonFormat(pattern = \"yyyy-MM-dd HH:mm:ss\", timezone = \"GMT+8\")");
+                }
+                System.out.println("@Column(name = \"" + columns[0] + "\")");
             }
-            System.out.println("@Column(name = \"" + columns[0] + "\")");
             System.out.println("private " + typeOf(columns[1]) + " " + nameOf(columns[0]) + ";");
         }
         bf.close();
